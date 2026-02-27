@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'members',
     loadChildren: () => import('./members/members.module').then( m => m.MembersPageModule)
   },
+  {
+    path: 'achievements',
+    loadChildren: () => import('./achievements/achievements.module').then( m => m.AchievementsPageModule)
+  },
   
 ];
 
