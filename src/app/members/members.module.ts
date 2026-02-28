@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { MembersPageRoutingModule } from './members-routing.module';
 
 import { MembersPage } from './members.page';
+import { MemberElementComponent } from './member-element/member-element.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { MembersPage } from './members.page';
     IonicModule,
     MembersPageRoutingModule
   ],
-  declarations: [MembersPage]
+  declarations: [MembersPage, MemberElementComponent]
 })
 export class MembersPageModule {}
