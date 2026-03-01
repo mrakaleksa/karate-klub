@@ -9,8 +9,10 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-label class="center-label">All club members:</ion-label>
+
   <ion-list>
-    <app-member-element *ngFor="let member of members"></app-member-element>
+    <app-member-element *ngFor="let member of members" [member]="member"></app-member-element>
   </ion-list>
 
   <ion-header collapse="condense">

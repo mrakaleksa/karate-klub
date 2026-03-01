@@ -12,8 +12,8 @@ import { Belt } from '../models/belt';
 export class MembersPage implements OnInit {
 
   members: Member[] = [{id: 1, firstName: 'Aleksa', lastName: 'Mrakovic', age: 29, belt: Belt.Black},
-    {id: 1, firstName: 'Aleksa', lastName: 'Mrakovic', age: 29, belt: Belt.Black},
-    {id: 1, firstName: 'Aleksa', lastName: 'Mrakovic', age: 29, belt: Belt.Black}
+    {id: 1, firstName: 'Pera', lastName: 'Mrakovic', age: 29, belt: Belt.Black},
+    {id: 1, firstName: 'Mika', lastName: 'Mrakovic', age: 29, belt: Belt.Black}
   ];
 
   constructor() { }
