@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Edit Member</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-item>
+    <ion-label position="floating">First Name</ion-label>
+    <ion-input [(ngModel)]="member.firstName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Last Name</ion-label>
+    <ion-input [(ngModel)]="member.lastName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Age</ion-label>
+    <ion-input type="number" [(ngModel)]="member.age"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Belt</ion-label>
+    <ion-select [(ngModel)]="member.belt">
+      <ion-select-option *ngFor="let b of belts" [value]="b">{{b}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="block" (click)="onSave()" class="ion-margin-top">
+    Save
+  </ion-button>
+
+</ion-content>

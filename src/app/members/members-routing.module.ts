@@ -7,7 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: MembersPage
+  },
+  {
+    path: 'edit/:memberId',
+    loadChildren: () => import('./member-edit/member-edit.module').then( m => m.MemberEditPageModule)
   }
+
 ];
 
 @NgModule({

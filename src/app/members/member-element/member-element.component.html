@@ -1,4 +1,4 @@
 <ion-item>
   <ion-label>{{member.firstName}} {{member.lastName}}, {{member.age}}, {{member.belt}} belt</ion-label>
-  <ion-button>Edit</ion-button>
+  <ion-button [routerLink]="['edit', member.id]">Edit</ion-button>
 </ion-item>

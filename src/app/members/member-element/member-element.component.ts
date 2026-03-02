@@ -14,6 +14,8 @@ export class MemberElementComponent  implements OnInit {
 
   constructor() { }
 
+  
+
   ngOnInit() {}
 
 }
