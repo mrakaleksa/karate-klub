@@ -1,4 +1,5 @@
 <ion-item>
   <ion-label>{{member.firstName}} {{member.lastName}}, {{member.age}}, {{member.belt}} belt</ion-label>
   <ion-button [routerLink]="['edit', member.id]">Edit</ion-button>
+  <ion-button fill="outline" size="small" color="danger" (click)="onDelete()">Delete</ion-button>
 </ion-item>

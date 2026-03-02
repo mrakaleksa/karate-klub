@@ -49,4 +49,10 @@ export class MembersService {
   private emitMembers() {
     this.membersSubject.next([...this.members]); 
   }
+
+  deleteMember(id: number) {
+    this.members = this.members.filter(m => m.id !== id);
+    this.emitMembers();
+  }
+  
 }
