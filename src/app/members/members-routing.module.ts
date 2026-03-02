@@ -11,7 +11,11 @@ const routes: Routes = [
   {
     path: 'edit/:memberId',
     loadChildren: () => import('./member-edit/member-edit.module').then( m => m.MemberEditPageModule)
+  },  {
+    path: 'member-add',
+    loadChildren: () => import('./member-add/member-add.module').then( m => m.MemberAddPageModule)
   }
+
 
 ];
 

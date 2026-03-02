@@ -16,22 +16,25 @@ export class MemberEditPage implements OnInit {
   member!: Member;
   belts = Object.values(Belt);
 
-  constructor(private route: ActivatedRoute, private membersService: MembersService, private navCtrl: NavController) { }
+  constructor(
+    private route: ActivatedRoute,
+    private membersService: MembersService,
+    private navCtrl: NavController
+  ) {}
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('memberId'));
-
     const member = this.membersService.getMember(id);
 
     if (!member) {
       throw new Error('Member not found');
     }
 
-    this.member = { ...member }; 
+    this.member = { ...member };
   }
 
   onSave() {
-    this.membersService.updateMember(this.member);
+    this.membersService.editMember(this.member);
     this.navCtrl.back();
   }
 
