@@ -24,11 +24,13 @@ const routes: Routes = [
   },
   {
     path: 'members',
-    loadChildren: () => import('./members/members.module').then( m => m.MembersPageModule)
+    loadChildren: () => import('./members/members.module').then( m => m.MembersPageModule),
+    canMatch: [authGuard]
   },
   {
     path: 'achievements',
-    loadChildren: () => import('./achievements/achievements.module').then( m => m.AchievementsPageModule)
+    loadChildren: () => import('./achievements/achievements.module').then( m => m.AchievementsPageModule),
+    canMatch: [authGuard]
   },
   
   
