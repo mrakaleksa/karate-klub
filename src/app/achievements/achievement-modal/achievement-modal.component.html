@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Achievement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label>Member</ion-label>
+    <ion-select [(ngModel)]="achievement.memberId">
+      <ion-select-option
+        *ngFor="let m of members"
+        [value]="m.id">
+        {{m.firstName}} {{m.lastName}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Competition</ion-label>
+    <ion-input [(ngModel)]="achievement.competition"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Placement</ion-label>
+    <ion-select [(ngModel)]="achievement.placement">
+      <ion-select-option
+        *ngFor="let p of placements"
+        [value]="p">
+        {{p}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="block"
+              class="ion-margin-top"
+              (click)="onSave()">
+    Save
+  </ion-button>
+
+  <ion-button expand="block"
+              fill="clear"
+              (click)="onCancel()">
+    Cancel
+  </ion-button>
+
+</ion-content>

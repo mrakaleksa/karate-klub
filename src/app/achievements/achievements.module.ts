@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AchievementsPageRoutingModule } from './achievements-routing.module';
 
 import { AchievementsPage } from './achievements.page';
+import { AchievementModalComponent } from './achievement-modal/achievement-modal.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { AchievementsPage } from './achievements.page';
     IonicModule,
     AchievementsPageRoutingModule
   ],
-  declarations: [AchievementsPage]
+  declarations: [AchievementsPage, AchievementModalComponent]
 })
 export class AchievementsPageModule {}

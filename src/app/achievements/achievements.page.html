@@ -1,16 +1,25 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
         <ion-back-button defaultHref="/home"></ion-back-button>       
     </ion-buttons>
-    <ion-title>achievements</ion-title>
+    <ion-title  class="ion-text-center">Achievements</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onAddAchievement()">Add</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">achievements</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  <ion-list>
+    <ion-item *ngFor="let achievement of achievements">
+      <ion-label>
+        Member ID: {{achievement.memberId}} <br>
+        {{achievement.competition}} <br>
+        {{achievement.placement}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
