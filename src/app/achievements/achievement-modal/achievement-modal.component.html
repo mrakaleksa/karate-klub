@@ -11,8 +11,9 @@
     <ion-select [(ngModel)]="achievement.memberId">
       <ion-select-option
         *ngFor="let m of members"
-        [value]="m.id">
-        {{m.firstName}} {{m.lastName}}
+        [value]="m.id"
+        [disabled]="!m.firstName && !m.lastName"> 
+        {{ m.firstName }} {{ m.lastName }}
       </ion-select-option>
     </ion-select>
   </ion-item>
@@ -28,21 +29,12 @@
       <ion-select-option
         *ngFor="let p of placements"
         [value]="p">
-        {{p}}
+        {{ p }}
       </ion-select-option>
     </ion-select>
   </ion-item>
 
-  <ion-button expand="block"
-              class="ion-margin-top"
-              (click)="onSave()">
-    Save
-  </ion-button>
-
-  <ion-button expand="block"
-              fill="clear"
-              (click)="onCancel()">
-    Cancel
-  </ion-button>
+  <ion-button expand="block" class="ion-margin-top" (click)="onSave()">Save</ion-button>
+  <ion-button expand="block" fill="clear" (click)="onCancel()">Cancel</ion-button>
 
 </ion-content>

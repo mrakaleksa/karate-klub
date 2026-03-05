@@ -25,6 +25,8 @@ export class MembersPage implements OnInit {
     this.membersService.members$.subscribe(members => {
       this.members = members;
     });
+
+    this.membersService.fetchMembers();
   }
 
  

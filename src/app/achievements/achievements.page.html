@@ -13,11 +13,9 @@
 <ion-content class="ion-padding">
 
   <ion-list>
-    <ion-item *ngFor="let achievement of achievements">
+    <ion-item *ngFor="let a of achievements">
       <ion-label>
-        Member ID: {{achievement.memberId}} <br>
-        {{achievement.competition}} <br>
-        {{achievement.placement}}
+        {{ a.memberName }} - {{ a.competition }} ({{ a.placement }})
       </ion-label>
     </ion-item>
   </ion-list>

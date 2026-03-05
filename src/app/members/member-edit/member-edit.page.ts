@@ -4,6 +4,7 @@ import { Belt } from 'src/app/models/belt';
 import { ActivatedRoute } from '@angular/router';
 import { MembersService } from '../members.service';
 import { NavController } from '@ionic/angular';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-member-edit',
@@ -23,14 +24,28 @@ export class MemberEditPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('memberId'));
-    const member = this.membersService.getMember(id);
 
-    if (!member) {
-      throw new Error('Member not found');
+    const id = this.route.snapshot.paramMap.get('memberId');
+
+    if (!id) {
+      throw new Error('No memberId in route');
     }
 
-    this.member = { ...member };
+    this.membersService.members$
+      .pipe(
+        map((members: Member[]) =>
+          members.find((m: Member) => m.id === id)
+        )
+      )
+      .subscribe((member: Member | undefined) => {
+
+        if (!member) {
+          throw new Error('Member not found');
+        }
+
+        this.member = { ...member };
+      });
+
   }
 
   onSave() {

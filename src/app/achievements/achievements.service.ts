@@ -1,31 +1,37 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Achievement } from './achievement.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AchievementsService {
 
-  private achievements: Achievement[] = [];
+  private baseUrl = 'https://karate-klub-obilic-app-default-rtdb.europe-west1.firebasedatabase.app/achievements';
+  private achievementsSubject = new BehaviorSubject<Achievement[]>([]);
+  achievements$: Observable<Achievement[]> = this.achievementsSubject.asObservable();
 
-  private achievementsSubject =
-    new BehaviorSubject<Achievement[]>([]);
-
-  achievements$: Observable<Achievement[]> =
-    this.achievementsSubject.asObservable();
-
-  constructor() {}
-
-  addAchievement(newAchievement: Achievement) {
-    const ids = this.achievements.map(a => a.id);
-    newAchievement.id = ids.length ? Math.max(...ids) + 1 : 1;
-
-    this.achievements.push({ ...newAchievement });
-    this.emitAchievements();
+  constructor(private http: HttpClient) {
+    this.fetchAchievements();
   }
 
-  private emitAchievements() {
-    this.achievementsSubject.next([...this.achievements]);
+  fetchAchievements() {
+    this.http.get<{ [key: string]: Achievement }>(`${this.baseUrl}.json`)
+      .subscribe(data => {
+        const list: Achievement[] = data
+          ? Object.keys(data).map(key => {
+              const { id, ...rest } = data[key]; 
+              return { id: key, ...rest };
+            })
+          : [];
+        this.achievementsSubject.next(list);
+      });
   }
+
+  addAchievement(achievement: Achievement) {
+    this.http.post<{ name: string }>(`${this.baseUrl}.json`, achievement)
+      .subscribe(() => this.fetchAchievements());
+  }
+
 }

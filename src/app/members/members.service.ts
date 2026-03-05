@@ -1,58 +1,55 @@
 import { Injectable } from '@angular/core';
-import { Member } from './member.model';
-import { Belt } from '../models/belt';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Member } from './member.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MembersService {
-  members: Member[] = [{id: 1, firstName: 'Aleksa', lastName: 'Mrakovic', age: 29, belt: Belt.Black},
-    {id: 2, firstName: 'Pera', lastName: 'Mrakovic', age: 29, belt: Belt.Black},
-    {id: 3, firstName: 'Mika', lastName: 'Mrakovic', age: 29, belt: Belt.Black}
-  ];
 
-  private membersSubject: BehaviorSubject<Member[]> = new BehaviorSubject([...this.members]);
+  private baseUrl =
+    'https://karate-klub-obilic-app-default-rtdb.europe-west1.firebasedatabase.app/members';
 
- 
+  private membersSubject = new BehaviorSubject<Member[]>([]);
+
   members$: Observable<Member[]> = this.membersSubject.asObservable();
 
-  constructor() {}
-
- 
-  getMember(id: number): Member | undefined {
-    return this.members.find((m) => m.id === id);
+  constructor(private http: HttpClient) {
+    this.fetchMembers();
   }
 
-  get currentMembers(): Member[] {
-    return this.membersSubject.getValue();
+
+  fetchMembers() {
+  this.http.get<{ [key: string]: Member }>(`${this.baseUrl}.json`)
+    .subscribe(data => {
+      const members: Member[] = data
+        ? Object.keys(data).map(key => {
+            const { id, ...rest } = data[key]; 
+            return { id: key, ...rest };       
+          })
+        : [];
+      this.membersSubject.next(members);
+    });
+}
+
+
+  addMember(member: Member) {
+    this.http.post(`${this.baseUrl}.json`, member)
+      .subscribe(() => this.fetchMembers());
   }
 
-  addMember(newMember: Member) {
-    const ids = this.members.map((m) => m.id);
-    newMember.id = ids.length ? Math.max(...ids) + 1 : 1;
-
-    this.members.push({ ...newMember });
-    this.emitMembers();
+  getMember(id: string): Member | undefined {
+    return this.membersSubject.value.find(m => m.id === id);
   }
 
-  
-  editMember(editedMember: Member) {
-    const index = this.members.findIndex((m) => m.id === editedMember.id);
-    if (index !== -1) {
-      this.members[index] = { ...editedMember };
-      this.emitMembers();
-    }
+  editMember(member: Member) {
+    this.http.put(`${this.baseUrl}/${member.id}.json`, member)
+      .subscribe(() => this.fetchMembers());
   }
 
-  
-  private emitMembers() {
-    this.membersSubject.next([...this.members]); 
+  deleteMember(id: string) {
+    this.http.delete(`${this.baseUrl}/${id}.json`)
+      .subscribe(() => this.fetchMembers());
   }
-
-  deleteMember(id: number) {
-    this.members = this.members.filter(m => m.id !== id);
-    this.emitMembers();
-  }
-  
 }

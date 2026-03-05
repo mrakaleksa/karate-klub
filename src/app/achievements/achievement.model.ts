@@ -1,8 +1,9 @@
 import { Placement } from '../models/placement';
 
 export interface Achievement {
-  id: number;
-  memberId: number;
+  id: string;
+  memberId: string;
+  memberName: string; 
   competition: string;
   placement: Placement;
 }

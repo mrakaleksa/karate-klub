@@ -13,7 +13,7 @@ import { Member } from '../member.model';
 export class MemberAddPage implements OnInit {
 
   member: Member = {
-    id: 0,
+    id: '', 
     firstName: '',
     lastName: '',
     age: 0,
