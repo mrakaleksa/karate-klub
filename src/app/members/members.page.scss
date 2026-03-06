@@ -3,3 +3,33 @@
   text-align: center;
   margin-top: 30px;
 }
+
+ion-toolbar {
+  --background: #c0392b; 
+}
+
+.toolbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.club-logo {
+  width: 45px;        
+  height: 45px;
+  object-fit: contain;
+  margin-right: 8px;   
+}
+
+.club-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 15px;
+}

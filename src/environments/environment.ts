@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseApiKey: "AIzaSyCwkzbrK1ftneq2yjGWAoHHTF1zFw5UD_Q",
+  databaseURL: "https://karate-klub-obilic-app-default-rtdb.europe-west1.firebasedatabase.app"
 };
 
 /*

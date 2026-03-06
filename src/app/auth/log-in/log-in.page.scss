@@ -1,0 +1,41 @@
+.register-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.register-link a {
+  color: var(--ion-color-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+ion-toolbar {
+  --background: #c0392b; 
+}
+
+.toolbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.club-logo {
+  width: 45px;        
+  height: 45px;
+  object-fit: contain;
+  margin-right: 8px;   
+}
+
+.club-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+

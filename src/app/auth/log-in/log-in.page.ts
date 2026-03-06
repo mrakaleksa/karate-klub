@@ -13,15 +13,26 @@ export class LogInPage implements OnInit {
   email = '';
   password = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {}
 
   onLogin() {
-    this.authService.login(this.email, this.password);
-    console.log('Email:', this.email);
-    console.log('Password:', this.password);
-  }
 
-  ngOnInit() {
-  }
+    this.authService.login(this.email, this.password)
+      .subscribe((res: any) => {
 
+        console.log(res);
+
+        localStorage.setItem('token', res.idToken);
+
+        this.router.navigate(['/home']);
+
+      }, error => {
+        console.error(error);
+      });
+  }
 }

@@ -3,7 +3,10 @@
     <ion-buttons slot="start">
         <ion-back-button defaultHref="/home"></ion-back-button>       
     </ion-buttons>
-    <ion-title  class="ion-text-center">Achievements</ion-title>
+    <div class="toolbar-content">
+      <img src="assets/images/kkobilic-logo.png" class="club-logo" />
+      <span class="club-title">Karate klub Obilic</span>
+    </div>
     <ion-buttons slot="end">
       <ion-button (click)="onAddAchievement()">Add</ion-button>
     </ion-buttons>
@@ -11,7 +14,9 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
+  <div class="page-title">
+    Achievements
+  </div>
   <ion-list>
     <ion-item *ngFor="let a of achievements">
       <ion-label>

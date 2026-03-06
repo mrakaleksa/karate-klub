@@ -1,11 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <div class="toolbar-content">
+      <img src="assets/images/kkobilic-logo.png" class="club-logo" />
+      <span class="club-title">Karate klub Obilic</span>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-
+  <div class="page-title">
+    Login
+  </div>
   <form (ngSubmit)="onLogin()" #loginForm="ngForm">
     <ion-item>
       <ion-label position="floating">Email</ion-label>
@@ -17,5 +22,11 @@
     </ion-item>
     <ion-button expand="block" type="submit" [disabled]="loginForm.invalid" class="ion-margin-top">Login</ion-button>
   </form>
+  <div class="register-link">
+    <p>
+      Don't have an account?
+      <a routerLink="/register">Register here</a>
+    </p>
+  </div>
 
 </ion-content>
