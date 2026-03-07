@@ -1,0 +1,51 @@
+ion-toolbar {
+  --background: #c0392b; 
+  --color: white;
+}
+
+.toolbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.club-logo {
+  width: 45px;        
+  height: 45px;
+  object-fit: contain;
+  margin-right: 8px;   
+}
+
+.club-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.welcome-message {
+  text-align: center;        
+  font-size: 28px;           
+  font-weight: bold;         
+  margin-top: 20px;          
+  color: #222;               
+}
+
+.home-photo-container {
+  display: flex;
+  justify-content: center;   
+  margin-top: 20px;
+}
+
+.home-photo {
+  width: 250px;             
+  height: auto;
+  border-radius: 16px;      
+  border: 3px solid #c0392b; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.home-photo:hover {
+  transform: scale(1.05);    
+}

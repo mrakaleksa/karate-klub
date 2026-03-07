@@ -1,0 +1,23 @@
+ion-menu ion-item {
+  --border-radius: 10px;
+  margin: 6px 10px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+ion-menu ion-item:hover {
+  --background: var(--ion-color-primary-tint);
+}
+
+.active-item {
+  --background: var(--ion-color-primary);
+  --color: white;
+}
+
+ion-menu ion-icon {
+  color: var(--ion-color-primary);
+}
+
+.active-item ion-icon {
+  color: white;
+}

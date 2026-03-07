@@ -3,7 +3,7 @@ import { AchievementsService } from './achievements.service';
 import { MembersService } from '../members/members.service';
 import { Achievement } from './achievement.model';
 import { Member } from '../members/member.model';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { AchievementModalComponent } from './achievement-modal/achievement-modal.component';
 
 @Component({
@@ -19,7 +19,8 @@ export class AchievementsPage implements OnInit {
   constructor(
     private achievementsService: AchievementsService,
     private membersService: MembersService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -39,5 +40,29 @@ export class AchievementsPage implements OnInit {
       component: AchievementModalComponent
     });
     await modal.present();
+  }
+
+  async onDelete(achievement: Achievement) {
+    const alert = await this.alertController.create({
+      header: 'Delete Achievement',
+      message: `Delete achievement of ${this.getMemberName(achievement.memberId)} in ${achievement.competition}?`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Delete',
+          role: 'destructive',
+          handler: () => {
+            this.achievementsService.deleteAchievement(achievement.id).subscribe(() => {
+              this.achievementsService.fetchAchievements();
+            });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

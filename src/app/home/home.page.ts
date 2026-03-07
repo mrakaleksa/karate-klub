@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
+  firstName: string = '';
+  lastName: string = '';
+
   constructor(private authService: AuthService, private router: Router) {}
 
   logout() {
@@ -18,6 +21,12 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
+    console.log('User from localStorage:', this.authService.getCurrentUser());
+    const user = this.authService.getCurrentUser();
+    if (user) {
+      this.firstName = user.firstName;
+      this.lastName = user.lastName;
+    }
   }
 
 }

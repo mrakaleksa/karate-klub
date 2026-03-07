@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http'; 
 
 @Component({
   selector: 'app-log-in',
@@ -15,24 +16,33 @@ export class LogInPage implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient 
   ) {}
 
   ngOnInit() {}
 
   onLogin() {
-
-    this.authService.login(this.email, this.password)
-      .subscribe((res: any) => {
-
-        console.log(res);
-
+    this.authService.login(this.email, this.password).subscribe(
+      (res: any) => {
+        console.log('Login response:', res);
         localStorage.setItem('token', res.idToken);
 
-        this.router.navigate(['/home']);
-
-      }, error => {
-        console.error(error);
-      });
+        
+        this.http.get(`${this.authService.getDatabaseUrl()}/users/${res.localId}.json`).subscribe(
+          (userData: any) => {
+            console.log('User data:', userData);
+            localStorage.setItem('user', JSON.stringify(userData));
+            this.router.navigate(['/home']);
+          },
+          (err) => console.error('Error fetching user data:', err)
+        );
+        this.email = '';
+        this.password = '';
+      },
+      (error) => {
+        console.error('Login error:', error);
+      }
+    );
   }
 }

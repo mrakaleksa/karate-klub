@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-back-button defaultHref="/home"></ion-back-button>       
+        <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <div class="toolbar-content">
       <img src="assets/images/kkobilic-logo.png" class="club-logo" />
@@ -22,6 +22,9 @@
       <ion-label>
         {{ a.memberName }} - {{ a.competition }} ({{ a.placement }})
       </ion-label>
+      <ion-button fill="clear" size="small" color="danger" (click)="onDelete(a)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 

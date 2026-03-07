@@ -1,5 +1,6 @@
 ion-toolbar {
   --background: #c0392b; 
+  --color: white;
 }
 
 .toolbar-content {
@@ -26,4 +27,43 @@ ion-toolbar {
   font-size: 24px;
   font-weight: bold;
   margin-top: 15px;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: var(--ion-color-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.register-content {
+  --padding-top: 0;  
+  --padding-bottom: 0;
+}
+
+.register-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  
+  align-items: center;          
+  height: 100%;
+  padding: 16px;
+
+  
+  padding-top: 12%;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
 }

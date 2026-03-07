@@ -11,6 +11,10 @@ export class AuthService {
   private apiKey = environment.firebaseApiKey;
   private dbUrl = environment.databaseURL;
 
+  getDatabaseUrl(): string {
+    return this.dbUrl;
+  }
+
   constructor(private http: HttpClient) {}
 
   register(email: string, password: string) {
@@ -42,8 +46,14 @@ export class AuthService {
     );
   }
 
+  getCurrentUser() {
+    const userJson = localStorage.getItem('user');
+    return userJson ? JSON.parse(userJson) : null;
+  }
+
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
   isAuthenticated(): boolean {

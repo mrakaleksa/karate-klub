@@ -1,33 +1,44 @@
 <ion-app>
+
   <ion-menu contentId="main-content">
+
     <ion-header>
-      <ion-toolbar>
-        <ion-title>Menu Content</ion-title>
+      <ion-toolbar color="primary">
+        <ion-title>Karate Klub Obilic</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding">
-      <ion-menu-toggle auto-hide="true">
-        <ion-button expand="block" color="primary" class="ion-margin-bottom">
-          About Us
-        </ion-button>
-      </ion-menu-toggle>
-      <ion-menu-toggle auto-hide="true">
-          <ion-button routerLink="/members" expand="block" color="primary" class="ion-margin-bottom">
-            Members
-          </ion-button>
-        </ion-menu-toggle>
+
+    <ion-content>
+
+      <ion-list>
+
         <ion-menu-toggle auto-hide="true">
-          <ion-button routerLink="/achievements" expand="block" color="primary" class="ion-margin-bottom">
-            Achievements
-          </ion-button>
-        </ion-menu-toggle>
-        <ion-menu-toggle auto-hide="true">
-          <ion-button expand="block" color="primary" class="ion-margin-bottom">
-            Gallery
-          </ion-button>
+          <ion-item routerLink="/home" routerLinkActive="active-item" lines="none">
+            <ion-icon name="home-outline" slot="start"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
         </ion-menu-toggle>
 
+        <ion-menu-toggle auto-hide="true">
+          <ion-item routerLink="/members" routerLinkActive="active-item" lines="none">
+            <ion-icon name="people-outline" slot="start"></ion-icon>
+            <ion-label>Members</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="true">
+          <ion-item routerLink="/achievements" routerLinkActive="active-item" lines="none">
+            <ion-icon name="trophy-outline" slot="start"></ion-icon>
+            <ion-label>Achievements</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+      </ion-list>
+
     </ion-content>
+
   </ion-menu>
+
   <ion-router-outlet id="main-content"></ion-router-outlet>
+
 </ion-app>

@@ -20,43 +20,38 @@ export class RegisterPage implements OnInit {
   ) {}
 
   ngOnInit() {
-
     this.registerForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-
   }
 
   onRegister() {
-
     if (!this.registerForm.valid) return;
 
     const { firstName, lastName, email, password } = this.registerForm.value;
 
-    this.authService.register(email, password)
-      .subscribe((res: any) => {
-
+    this.authService.register(email, password).subscribe(
+      (res: any) => {
         const userId = res.localId;
 
         this.authService.saveUserData(userId, {
-          firstName: firstName,
-          lastName: lastName,
-          email: email
-        }).subscribe(() => {
-
-          console.log("User created");
-
-          this.router.navigate(['/login']);
-
-        });
-
-      }, error => {
-        console.error(error);
-      });
-
+          firstName,
+          lastName,
+          email
+        }).subscribe(
+          () => {
+            console.log("User created");
+            this.registerForm.reset();
+            this.router.navigate(['/login']);
+          },
+          (err) => console.error('Error saving user data:', err)
+        );
+        
+      },
+      (error) => console.error('Registration error:', error)
+    );
   }
-
 }

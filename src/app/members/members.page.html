@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-back-button defaultHref="/home"></ion-back-button>       
+        <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <div class="toolbar-content">
       <img src="assets/images/kkobilic-logo.png" class="club-logo" />
@@ -22,12 +22,12 @@
   
 
   <ion-list>
-    <app-member-element *ngFor="let member of members" [member]="member"></app-member-element>
+    <app-member-element 
+      *ngFor="let member of members" 
+      [member]="member" 
+      class="member-card">
+    </app-member-element>
   </ion-list>
 
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">members</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
 </ion-content>

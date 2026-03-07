@@ -7,26 +7,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <div class="page-title">
-    Login
+<ion-content class="ion-padding login-content">
+  <div class="login-flex">
+    <div class="login-container">
+      <div class="page-title">
+        Login
+      </div>
+      <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input type="email" name="email" [(ngModel)]="email" required email></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Password</ion-label>
+          <ion-input type="password" name="password" [(ngModel)]="password" required minlength="6"></ion-input>
+        </ion-item>
+        <ion-button expand="block" type="submit" [disabled]="loginForm.invalid" class="ion-margin-top">
+          Login
+        </ion-button>
+      </form>
+      <div class="register-link">
+        <p>
+          Don't have an account?
+          <a routerLink="/register">Register here</a>
+        </p>
+      </div>
+    </div>
   </div>
-  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" name="email" [(ngModel)]="email" required email></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" name="password" [(ngModel)]="password" required minlength="6"></ion-input>
-    </ion-item>
-    <ion-button expand="block" type="submit" [disabled]="loginForm.invalid" class="ion-margin-top">Login</ion-button>
-  </form>
-  <div class="register-link">
-    <p>
-      Don't have an account?
-      <a routerLink="/register">Register here</a>
-    </p>
-  </div>
-
 </ion-content>

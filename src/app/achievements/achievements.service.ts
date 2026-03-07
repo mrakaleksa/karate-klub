@@ -34,4 +34,8 @@ export class AchievementsService {
       .subscribe(() => this.fetchAchievements());
   }
 
+  deleteAchievement(id: string) {
+    return this.http.delete(`${this.baseUrl}/${id}.json`);
+  }
+
 }

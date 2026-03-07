@@ -6,6 +6,7 @@
 
 ion-toolbar {
   --background: #c0392b; 
+  --color: white;
 }
 
 .toolbar-content {
@@ -28,8 +29,44 @@ ion-toolbar {
 }
 
 .page-title {
-  text-align: center;
   font-size: 24px;
   font-weight: bold;
-  margin-top: 15px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #c0392b;
+}
+
+.member-card {
+  display: block;
+  background: #fff;
+  border-radius: 12px;           
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+  margin: 10px 0;                
+  padding: 12px 16px;            
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  }
+}
+
+
+app-member-element .member-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+app-member-element .member-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #222;
+}
+
+app-member-element .member-belt {
+  font-weight: 500;
+  font-size: 14px;
+  color: #c0392b;
 }
