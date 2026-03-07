@@ -38,27 +38,31 @@ export class HomePage implements OnInit {
       this.lastName = user.lastName;
     }
 
+    setTimeout(() => {
+      this.loading?.dismiss();
+    }, 3000);
     
   }
 
   ngAfterViewInit() {
-
     const images = this.photos.toArray();
 
+    
     const allLoaded = images.every(img => img.nativeElement.complete);
-
     if (allLoaded) {
-      this.loading.dismiss();
-    } else {
-      images.forEach(img => {
-        img.nativeElement.onload = () => {
-          const loaded = images.every(i => i.nativeElement.complete);
-          if (loaded) {
-            this.loading.dismiss();
-          }
-        };
-      });
+      this.loading?.dismiss();
+      return;
     }
+
+    
+    images.forEach(img => {
+      img.nativeElement.onload = () => {
+        const loaded = images.every(i => i.nativeElement.complete);
+        if (loaded) {
+          this.loading?.dismiss();
+        }
+      };
+    });
   }
 
   logout() {

@@ -4,7 +4,7 @@
 
     <ion-header>
       <ion-toolbar color="primary">
-        <ion-title>Karate Klub Obilic</ion-title>
+        <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -13,21 +13,21 @@
       <ion-list>
 
         <ion-menu-toggle auto-hide="true">
-          <ion-item routerLink="/home" routerLinkActive="active-item" lines="none">
+          <ion-item routerLink="/home" routerLinkActive="active-item" [routerLinkActiveOptions]="{ exact: true }" lines="none">
             <ion-icon name="home-outline" slot="start"></ion-icon>
             <ion-label>Home</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle auto-hide="true">
-          <ion-item routerLink="/members" routerLinkActive="active-item" lines="none">
+          <ion-item routerLink="/members" routerLinkActive="active-item" [routerLinkActiveOptions]="{ exact: true }" lines="none">
             <ion-icon name="people-outline" slot="start"></ion-icon>
             <ion-label>Members</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle auto-hide="true">
-          <ion-item routerLink="/achievements" routerLinkActive="active-item" lines="none">
+          <ion-item routerLink="/achievements" routerLinkActive="active-item" [routerLinkActiveOptions]="{ exact: true }" lines="none">
             <ion-icon name="trophy-outline" slot="start"></ion-icon>
             <ion-label>Achievements</ion-label>
           </ion-item>
