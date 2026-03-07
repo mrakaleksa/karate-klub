@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -13,20 +14,56 @@ export class HomePage implements OnInit {
   firstName: string = '';
   lastName: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  @ViewChildren('photo') photos!: QueryList<ElementRef>;
 
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
+  loading!: HTMLIonLoadingElement;
 
-  ngOnInit() {
+  constructor(private authService: AuthService, private router: Router, private loadingCtrl: LoadingController) {}
+
+  
+
+  async ngOnInit() {
+
+    this.loading = await this.loadingCtrl.create({
+      message: 'Loading photos...',
+      spinner: 'crescent'
+    });
+
+    await this.loading.present();
+
     console.log('User from localStorage:', this.authService.getCurrentUser());
     const user = this.authService.getCurrentUser();
     if (user) {
       this.firstName = user.firstName;
       this.lastName = user.lastName;
     }
+
+    
+  }
+
+  ngAfterViewInit() {
+
+    const images = this.photos.toArray();
+
+    const allLoaded = images.every(img => img.nativeElement.complete);
+
+    if (allLoaded) {
+      this.loading.dismiss();
+    } else {
+      images.forEach(img => {
+        img.nativeElement.onload = () => {
+          const loaded = images.every(i => i.nativeElement.complete);
+          if (loaded) {
+            this.loading.dismiss();
+          }
+        };
+      });
+    }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

@@ -49,3 +49,10 @@ ion-toolbar {
 .home-photo:hover {
   transform: scale(1.05);    
 }
+
+.logout-btn {
+  --background: #3880ff;
+  --color: white;
+  --border-radius: 50px;
+}
+

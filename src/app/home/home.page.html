@@ -10,7 +10,7 @@
         <span class="club-title">Karate klub Obilic</span>
       </div>
       <ion-buttons slot="end">
-        <ion-button (click)="logout()">
+        <ion-button class="logout-btn"(click)="logout()">
           Logout
         </ion-button>
       </ion-buttons>
@@ -23,15 +23,15 @@
     </div>
 
     <div class="home-photo-container">
-      <img src="assets/images/kkobilic-dojo1.png" alt="Karate Photo" class="home-photo" />
+      <img #photo src="assets/images/kkobilic-dojo1.png" alt="Karate Photo" class="home-photo" />
     </div>
 
     <div class="home-photo-container">
-      <img src="assets/images/kkobilic-dojo2.png" alt="Karate Photo" class="home-photo" />
+      <img #photo src="assets/images/kkobilic-dojo2.png" alt="Karate Photo" class="home-photo" />
     </div>
 
     <div class="home-photo-container">
-      <img src="assets/images/kkobilic-dojo3.png" alt="Karate Photo" class="home-photo" />
+      <img #photo src="assets/images/kkobilic-dojo3.png" alt="Karate Photo" class="home-photo" />
     </div>
   </ion-content>
 </div>
