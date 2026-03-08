@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Karate klub Obilic</string>
+    <string name="title_activity_main">Karate klub Obilic</string>
+    <string name="package_name">com.obilic.karateklub</string>
+    <string name="custom_url_scheme">com.obilic.karateklub</string>
+</resources>
